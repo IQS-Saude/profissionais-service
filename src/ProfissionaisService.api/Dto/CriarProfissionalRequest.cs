@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using ProfissionaisService.common.Json.Converters;
 
 namespace ProfissionaisService.api.Dto;
 
@@ -31,6 +32,8 @@ public record CriarProfissionalRequest
     [JsonConverter(typeof(StringBoolConverter))]
     public bool Recomendado { get; set; }
 
+    [JsonConverter(typeof(StringBoolConverter))]
     public bool Status { get; set; }
+
     public List<int> Especialidades { get; set; }
 }

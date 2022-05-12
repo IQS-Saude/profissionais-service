@@ -1,4 +1,6 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
+using ProfissionaisService.common.Json.Converters;
 
 namespace ProfissionaisService.api.Dto;
 
@@ -27,7 +29,12 @@ public record AlterarProfissionalRequest
     public string? Instagram { get; set; }
     public string? Youtube { get; set; }
     public string? Linkedin { get; set; }
+
+    [JsonConverter(typeof(StringBoolConverter))]
     public bool Recomendado { get; set; }
+
+    [JsonConverter(typeof(StringBoolConverter))]
     public bool Status { get; set; }
+
     public List<int> Especialidades { get; set; }
 }

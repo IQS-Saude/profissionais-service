@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ProfissionaisService.api.Dto;
+namespace ProfissionaisService.common.Json.Converters;
 
 public class StringBoolConverter : JsonConverter<bool>
 {
