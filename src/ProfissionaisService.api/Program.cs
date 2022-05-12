@@ -1,6 +1,6 @@
-using Microsoft.OpenApi.Models;
 using ProfissionaisService.infra.Crosscutting.IoC.Configuration;
 using ProfissionaisService.infra.Crosscutting.IoC.Configuration.Database;
+using ProfissionaisService.infra.Crosscutting.IoC.Configuration.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,15 +16,7 @@ builder.Services.AddDependencyInjection();
 
 var app = builder.Build();
 
-app.UseSwagger(swagger =>
-{
-    swagger.PreSerializeFilters.Add((swaggerDoc, httpReq) =>
-    {
-        swaggerDoc.Servers = new List<OpenApiServer>
-            { new() { Url = $"{httpReq.Scheme}://{httpReq.Host.Value}/profissionais" } };
-    });
-});
-app.UseSwaggerUI();
+app.AddSwagger("profissionais");
 
 app.UseHttpsRedirection();
 
@@ -33,6 +25,6 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+app.MapControllers();
 
 app.Run();
