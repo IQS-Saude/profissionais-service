@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using Profissionais.App.Ports;
-using Profissional.Domain.Aggregates.TipoProfissional;
-using Profissional.Infrastructure.Data;
+using ProfissionaisService.application.Ports;
+using ProfissionaisService.domain.Aggregates.TipoProfissional;
+using ProfissionaisService.infra.data.Data;
 
-namespace Profissional.Infrastructure.Adapters.Repositories;
+namespace ProfissionaisService.infra.data.Adapters.Repositories;
 
 public class TipoProfissionalRepository : ITipoProfissionalRepository
 {

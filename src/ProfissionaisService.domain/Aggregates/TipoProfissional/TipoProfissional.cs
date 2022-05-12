@@ -1,7 +1,7 @@
-using Profissional.Domain.Events;
-using Profissional.Domain.SeedWork;
+using ProfissionaisService.domain.Events;
+using ProfissionaisService.domain.SeedWork;
 
-namespace Profissional.Domain.Aggregates.TipoProfissional;
+namespace ProfissionaisService.domain.Aggregates.TipoProfissional;
 
 public class TipoProfissional : Entity, IAggregateRoot
 {

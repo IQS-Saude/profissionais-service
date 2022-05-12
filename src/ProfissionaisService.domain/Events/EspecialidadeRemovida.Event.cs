@@ -1,7 +1,7 @@
 using MediatR;
-using Profissional.Domain.Aggregates.TipoProfissional;
+using ProfissionaisService.domain.Aggregates.TipoProfissional;
 
-namespace Profissional.Domain.Events;
+namespace ProfissionaisService.domain.Events;
 
 public class EspecialidadeRemovidaEvent : INotification
 {

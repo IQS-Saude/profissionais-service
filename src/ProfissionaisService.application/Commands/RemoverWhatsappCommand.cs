@@ -1,7 +1,7 @@
 using MediatR;
-using Profissionais.App.DTO;
+using ProfissionaisService.application.DTO;
 
-namespace Profissionais.App.Commands;
+namespace ProfissionaisService.application.Commands;
 
 public class RemoverWhatsappCommand : IRequest<List<WhatsappResponse>>
 {

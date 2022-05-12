@@ -1,18 +1,19 @@
-using Profissional.Domain.Aggregates.TipoProfissional;
+using ProfissionaisService.domain.Aggregates.Profissional;
+using ProfissionaisService.domain.Aggregates.TipoProfissional;
 
-namespace Profissionais.App.Ports;
+namespace ProfissionaisService.application.Ports;
 
 public interface IProfissionalRepository
 {
-    public Task<Profissional.Domain.Aggregates.Profissional.Profissional> Criar(
-        Profissional.Domain.Aggregates.Profissional.Profissional profissional);
+    public Task<Profissional> Criar(
+        Profissional profissional);
 
-    public Task<Profissional.Domain.Aggregates.Profissional.Profissional> Alterar(
-        Profissional.Domain.Aggregates.Profissional.Profissional profissional);
+    public Task<Profissional> Alterar(
+        Profissional profissional);
 
-    public Task Remover(Profissional.Domain.Aggregates.Profissional.Profissional profissional);
+    public Task Remover(Profissional profissional);
 
-    public Task<Profissional.Domain.Aggregates.Profissional.Profissional?> BuscarPorId(int id);
+    public Task<Profissional?> BuscarPorId(int id);
 
     public Task<TipoProfissional?> BuscarTipoProfissionalPorId(int id);
 

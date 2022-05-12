@@ -1,4 +1,4 @@
-namespace Profissional.Domain.Exceptions;
+namespace ProfissionaisService.domain.Exceptions;
 
 public class EspecialidadeNaoPertenceException : Exception
 {

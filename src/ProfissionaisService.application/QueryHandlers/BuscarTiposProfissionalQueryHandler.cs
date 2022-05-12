@@ -1,9 +1,9 @@
 using MediatR;
-using Profissionais.App.DTO;
-using Profissionais.App.Ports;
-using Profissionais.App.Queries;
+using ProfissionaisService.application.DTO;
+using ProfissionaisService.application.Ports;
+using ProfissionaisService.application.Queries;
 
-namespace Profissionais.App.QueryHandlers;
+namespace ProfissionaisService.application.QueryHandlers;
 
 public class
     BuscarTiposProfissionalQueryHandler : IRequestHandler<BuscarTiposProfissionalQuery,

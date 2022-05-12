@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Profissional.API.DTO;
+namespace ProfissionaisService.api.Dto;
 
 public class StringBoolConverter : JsonConverter<bool>
 {
@@ -9,7 +9,9 @@ public class StringBoolConverter : JsonConverter<bool>
     {
         return reader.TokenType switch
         {
-            JsonTokenType.String => bool.TryParse(reader.GetString() is "1" or "0" ? ReadNumberStringBoolean(reader.GetString()) : reader.GetString(), out var boolean)
+            JsonTokenType.String => bool.TryParse(
+                reader.GetString() is "1" or "0" ? ReadNumberStringBoolean(reader.GetString()) : reader.GetString(),
+                out var boolean)
                 ? boolean
                 : throw new JsonException(),
             _ => throw new JsonException()

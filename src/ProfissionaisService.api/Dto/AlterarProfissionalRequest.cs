@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Profissional.API.DTO;
+namespace ProfissionaisService.api.Dto;
 
 public record AlterarProfissionalRequest
 {

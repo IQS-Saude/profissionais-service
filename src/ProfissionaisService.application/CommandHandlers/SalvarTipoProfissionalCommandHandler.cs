@@ -1,11 +1,11 @@
 using MediatR;
-using Profissionais.App.Commands;
-using Profissionais.App.DTO;
-using Profissionais.App.Exceptions;
-using Profissionais.App.Ports;
-using Profissional.Domain.Aggregates.TipoProfissional;
+using ProfissionaisService.application.Commands;
+using ProfissionaisService.application.DTO;
+using ProfissionaisService.application.Exceptions;
+using ProfissionaisService.application.Ports;
+using ProfissionaisService.domain.Aggregates.TipoProfissional;
 
-namespace Profissionais.App.CommandHandlers;
+namespace ProfissionaisService.application.CommandHandlers;
 
 public class
     SalvarTipoProfissionalCommandHandler : IRequestHandler<SalvarTipoProfissionalCommand,

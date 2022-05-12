@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Profissionais.App.Commands;
+namespace ProfissionaisService.application.Commands;
 
 public class AdicionarConvenioCommand : IRequest<List<string>>
 {

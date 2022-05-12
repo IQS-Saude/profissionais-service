@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Profissional.API.DTO;
+using ProfissionaisService.api.Dto;
 
-namespace Profissional.API.Controllers;
+namespace ProfissionaisService.api.Controllers;
 
 public class ApiController : ControllerBase
 {

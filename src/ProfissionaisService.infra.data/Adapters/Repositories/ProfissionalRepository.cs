@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using Profissionais.App.Ports;
-using Profissional.Domain.Aggregates.TipoProfissional;
-using Profissional.Infrastructure.Data;
+using ProfissionaisService.application.Ports;
+using ProfissionaisService.domain.Aggregates.TipoProfissional;
+using ProfissionaisService.infra.data.Data;
 
-namespace Profissional.Infrastructure.Adapters.Repositories;
+namespace ProfissionaisService.infra.data.Adapters.Repositories;
 
 public class ProfissionalRepository : IProfissionalRepository
 {
@@ -14,8 +14,8 @@ public class ProfissionalRepository : IProfissionalRepository
 
     private ProfissionalContext ProfissionalContext { get; }
 
-    public async Task<Domain.Aggregates.Profissional.Profissional> Criar(
-        Domain.Aggregates.Profissional.Profissional profissional)
+    public async Task<domain.Aggregates.Profissional.Profissional> Criar(
+        domain.Aggregates.Profissional.Profissional profissional)
     {
         ProfissionalContext.Profissionais.Add(profissional);
         await ProfissionalContext.SaveChangesAsync();
@@ -23,8 +23,8 @@ public class ProfissionalRepository : IProfissionalRepository
         return profissional;
     }
 
-    public async Task<Domain.Aggregates.Profissional.Profissional> Alterar(
-        Domain.Aggregates.Profissional.Profissional profissional)
+    public async Task<domain.Aggregates.Profissional.Profissional> Alterar(
+        domain.Aggregates.Profissional.Profissional profissional)
     {
         ProfissionalContext.Profissionais.Update(profissional);
         await ProfissionalContext.SaveChangesAsync();
@@ -32,7 +32,7 @@ public class ProfissionalRepository : IProfissionalRepository
         return profissional;
     }
 
-    public async Task Remover(Domain.Aggregates.Profissional.Profissional profissional)
+    public async Task Remover(domain.Aggregates.Profissional.Profissional profissional)
     {
         // var model = ProfissionalMapper.ToModel(profissional);
 
@@ -40,7 +40,7 @@ public class ProfissionalRepository : IProfissionalRepository
         await ProfissionalContext.SaveChangesAsync();
     }
 
-    public async Task<Domain.Aggregates.Profissional.Profissional?> BuscarPorId(int id)
+    public async Task<domain.Aggregates.Profissional.Profissional?> BuscarPorId(int id)
     {
         var profissional =
             await ProfissionalContext.Profissionais.Include(p => p.Especialidades)

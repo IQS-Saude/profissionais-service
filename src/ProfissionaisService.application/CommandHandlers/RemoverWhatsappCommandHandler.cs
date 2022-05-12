@@ -1,11 +1,11 @@
 using MediatR;
-using Profissionais.App.Commands;
-using Profissionais.App.DTO;
-using Profissionais.App.Ports;
-using Profissional.Domain.Aggregates.Profissional;
-using Profissional.Domain.Exceptions;
+using ProfissionaisService.application.Commands;
+using ProfissionaisService.application.DTO;
+using ProfissionaisService.application.Ports;
+using ProfissionaisService.domain.Aggregates.Profissional;
+using ProfissionaisService.domain.Exceptions;
 
-namespace Profissionais.App.CommandHandlers;
+namespace ProfissionaisService.application.CommandHandlers;
 
 public class RemoverWhatsappCommandHandler : IRequestHandler<RemoverWhatsappCommand, List<WhatsappResponse>>
 {

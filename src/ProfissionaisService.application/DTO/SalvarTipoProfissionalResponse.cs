@@ -1,4 +1,4 @@
-namespace Profissionais.App.DTO;
+namespace ProfissionaisService.application.DTO;
 
 public record SalvarTipoProfissionalEspecialidadeResponse(int Id, string Descricao);
 

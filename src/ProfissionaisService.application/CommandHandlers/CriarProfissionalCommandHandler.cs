@@ -1,11 +1,11 @@
 using MediatR;
-using Profissionais.App.Commands;
-using Profissionais.App.DTO;
-using Profissionais.App.Exceptions;
-using Profissionais.App.Ports;
-using Profissional.Domain.Aggregates.Profissional;
+using ProfissionaisService.application.Commands;
+using ProfissionaisService.application.DTO;
+using ProfissionaisService.application.Exceptions;
+using ProfissionaisService.application.Ports;
+using ProfissionaisService.domain.Aggregates.Profissional;
 
-namespace Profissionais.App.CommandHandlers;
+namespace ProfissionaisService.application.CommandHandlers;
 
 public class CriarProfissionalCommandHandler : IRequestHandler<CriarProfissionalCommand, CriarProfissionalResponse>
 {
@@ -23,7 +23,7 @@ public class CriarProfissionalCommandHandler : IRequestHandler<CriarProfissional
 
         if (tipoProfissional is null) throw new TipoProfissionalNaoEncontradoException();
 
-        var profissional = new Profissional.Domain.Aggregates.Profissional.Profissional(request.Nome,
+        var profissional = new Profissional(request.Nome,
             request.UrlAmigavel, request.Sobre,
             request.UnidadeId, request.ImagemUrlPerfil, request.Conselho, request.NumeroIdentificacao, request.Telefone,
             request.Celular, request.Email, request.Site, request.Facebook, request.Instagram, request.Youtube,

@@ -1,7 +1,7 @@
 using MediatR;
-using Profissional.Domain.Exceptions;
+using ProfissionaisService.domain.Exceptions;
 
-namespace Profissional.Domain.SeedWork;
+namespace ProfissionaisService.domain.SeedWork;
 
 public abstract class Entity
 {

@@ -1,6 +1,6 @@
-using Profissional.Domain.Aggregates.TipoProfissional;
+using ProfissionaisService.domain.Aggregates.TipoProfissional;
 
-namespace Profissionais.App.Ports;
+namespace ProfissionaisService.application.Ports;
 
 public interface ITipoProfissionalRepository
 {

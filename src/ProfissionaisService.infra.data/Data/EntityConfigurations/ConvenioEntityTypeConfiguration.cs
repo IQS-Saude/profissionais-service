@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Profissional.Domain.Aggregates.Profissional;
+using ProfissionaisService.domain.Aggregates.Profissional;
 
-namespace Profissional.Infrastructure.Data.EntityConfigurations;
+namespace ProfissionaisService.infra.data.Data.EntityConfigurations;
 
 public class ConvenioEntityTypeConfiguration : IEntityTypeConfiguration<Convenio>
 {

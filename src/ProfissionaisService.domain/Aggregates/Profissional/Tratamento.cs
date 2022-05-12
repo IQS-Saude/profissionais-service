@@ -1,6 +1,6 @@
-using Profissional.Domain.SeedWork;
+using ProfissionaisService.domain.SeedWork;
 
-namespace Profissional.Domain.Aggregates.Profissional;
+namespace ProfissionaisService.domain.Aggregates.Profissional;
 
 public class Tratamento : ValueObject
 {

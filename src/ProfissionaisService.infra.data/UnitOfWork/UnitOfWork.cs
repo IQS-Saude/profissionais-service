@@ -1,6 +1,6 @@
-using Profissional.Domain.SeedWork;
+using ProfissionaisService.domain.SeedWork;
 
-namespace Profissional.Infrastructure.UnitOfWork;
+namespace ProfissionaisService.infra.data.UnitOfWork;
 
 public class UnitOfWork : IUnitOfWork
 {

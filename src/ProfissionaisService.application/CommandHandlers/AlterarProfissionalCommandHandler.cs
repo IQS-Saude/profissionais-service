@@ -1,12 +1,12 @@
 using MediatR;
-using Profissionais.App.Commands;
-using Profissionais.App.DTO;
-using Profissionais.App.Exceptions;
-using Profissionais.App.Ports;
-using Profissional.Domain.Aggregates.Profissional;
-using Profissional.Domain.Exceptions;
+using ProfissionaisService.application.Commands;
+using ProfissionaisService.application.DTO;
+using ProfissionaisService.application.Exceptions;
+using ProfissionaisService.application.Ports;
+using ProfissionaisService.domain.Aggregates.Profissional;
+using ProfissionaisService.domain.Exceptions;
 
-namespace Profissionais.App.CommandHandlers;
+namespace ProfissionaisService.application.CommandHandlers;
 
 public class
     AlterarProfissionalCommandHandler : IRequestHandler<AlterarProfissionalCommand, AlterarProfissionalResponse>
@@ -58,7 +58,7 @@ public class
     }
 
 
-    private async Task AlterarCampos(Profissional.Domain.Aggregates.Profissional.Profissional profissional,
+    private async Task AlterarCampos(Profissional profissional,
         AlterarProfissionalCommand request)
     {
         AlterarEndereco(profissional, request.Endereco);
@@ -85,7 +85,7 @@ public class
         await AlterarEspecialidades(profissional, request.Especialidades);
     }
 
-    private void AlterarEndereco(Profissional.Domain.Aggregates.Profissional.Profissional profissional,
+    private void AlterarEndereco(Profissional profissional,
         AlterarProfissionalEndereco endereco)
     {
         var enderecoDomain = new Endereco(endereco.Logradouro, endereco.Numero, endereco.Bairro, endereco.Cidade,
@@ -94,7 +94,7 @@ public class
         profissional.MudarEndereco(enderecoDomain);
     }
 
-    private async Task AlterarTipoProfissional(Profissional.Domain.Aggregates.Profissional.Profissional profissional,
+    private async Task AlterarTipoProfissional(Profissional profissional,
         int tipoProfissionalId)
     {
         var tipoProfissional = await ProfissionalRepository.BuscarTipoProfissionalPorId(tipoProfissionalId);
@@ -105,7 +105,7 @@ public class
             profissional.MudarTipoProfissional(tipoProfissional);
     }
 
-    private async Task AlterarEspecialidades(Profissional.Domain.Aggregates.Profissional.Profissional profissional,
+    private async Task AlterarEspecialidades(Profissional profissional,
         List<int> especialidades)
     {
         foreach (var especialidade in especialidades)

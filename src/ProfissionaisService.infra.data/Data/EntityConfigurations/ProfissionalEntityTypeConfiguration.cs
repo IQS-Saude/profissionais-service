@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Profissional.Infrastructure.Data.EntityConfigurations;
+namespace ProfissionaisService.infra.data.Data.EntityConfigurations;
 
-public class ProfissionalEntityTypeConfiguration : IEntityTypeConfiguration<Domain.Aggregates.Profissional.Profissional>
+public class ProfissionalEntityTypeConfiguration : IEntityTypeConfiguration<domain.Aggregates.Profissional.Profissional>
 {
-    public void Configure(EntityTypeBuilder<Domain.Aggregates.Profissional.Profissional> builder)
+    public void Configure(EntityTypeBuilder<domain.Aggregates.Profissional.Profissional> builder)
     {
         builder.ToTable("profissionais");
 

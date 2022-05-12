@@ -1,6 +1,6 @@
-using Profissional.Domain.SeedWork;
+using ProfissionaisService.domain.SeedWork;
 
-namespace Profissional.Domain.Aggregates.Midias;
+namespace ProfissionaisService.domain.Aggregates.Midias;
 
 public abstract class MidiaAbstract : ValueObject
 {

@@ -1,3 +1,3 @@
-namespace Profissionais.App.DTO;
+namespace ProfissionaisService.application.DTO;
 
 public record WhatsappResponse(long Numero, bool Principal);

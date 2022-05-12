@@ -1,7 +1,7 @@
 using MediatR;
-using Profissional.Domain.Aggregates.Midias;
+using ProfissionaisService.domain.Aggregates.Midias;
 
-namespace Profissional.Domain.Events;
+namespace ProfissionaisService.domain.Events;
 
 public class MidiaRemovidaEvent : INotification
 {

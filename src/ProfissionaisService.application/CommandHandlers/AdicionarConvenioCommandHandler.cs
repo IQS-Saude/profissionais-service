@@ -1,10 +1,10 @@
 using MediatR;
-using Profissionais.App.Commands;
-using Profissionais.App.Ports;
-using Profissional.Domain.Aggregates.Profissional;
-using Profissional.Domain.Exceptions;
+using ProfissionaisService.application.Commands;
+using ProfissionaisService.application.Ports;
+using ProfissionaisService.domain.Aggregates.Profissional;
+using ProfissionaisService.domain.Exceptions;
 
-namespace Profissionais.App.CommandHandlers;
+namespace ProfissionaisService.application.CommandHandlers;
 
 public class AdicionarConvenioCommandHandler : IRequestHandler<AdicionarConvenioCommand, List<string>>
 {

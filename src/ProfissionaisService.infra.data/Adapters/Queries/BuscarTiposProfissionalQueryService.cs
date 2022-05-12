@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using Profissionais.App.DTO;
-using Profissionais.App.Ports;
-using Profissional.Infrastructure.Data;
+using ProfissionaisService.application.DTO;
+using ProfissionaisService.application.Ports;
+using ProfissionaisService.infra.data.Data;
 
-namespace Profissional.Infrastructure.Adapters.Queries;
+namespace ProfissionaisService.infra.data.Adapters.Queries;
 
 public class BuscarTiposProfissionalQueryService : IBuscarTiposProfissionalQueryService
 {

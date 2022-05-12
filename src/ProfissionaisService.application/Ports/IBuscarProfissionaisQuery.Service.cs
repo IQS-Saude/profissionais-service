@@ -1,7 +1,7 @@
-using Profissionais.App.DTO;
-using Profissionais.App.Queries;
+using ProfissionaisService.application.DTO;
+using ProfissionaisService.application.Queries;
 
-namespace Profissionais.App.Ports;
+namespace ProfissionaisService.application.Ports;
 
 public interface IBuscarProfissionaisQueryService
 {

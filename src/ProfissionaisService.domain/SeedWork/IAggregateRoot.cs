@@ -1,4 +1,4 @@
-namespace Profissional.Domain.SeedWork;
+namespace ProfissionaisService.domain.SeedWork;
 
 public interface IAggregateRoot
 {

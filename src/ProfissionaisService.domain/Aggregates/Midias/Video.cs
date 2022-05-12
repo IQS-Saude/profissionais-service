@@ -1,4 +1,4 @@
-namespace Profissional.Domain.Aggregates.Midias;
+namespace ProfissionaisService.domain.Aggregates.Midias;
 
 public class Video : MidiaAbstract
 {

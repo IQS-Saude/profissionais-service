@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Profissional.Domain.Aggregates.Midias;
+using ProfissionaisService.domain.Aggregates.Midias;
 
-namespace Profissional.Infrastructure.Data.EntityConfigurations;
+namespace ProfissionaisService.infra.data.Data.EntityConfigurations;
 
 public class ImagemEntityTypeConfiguration : IEntityTypeConfiguration<Imagem>
 {

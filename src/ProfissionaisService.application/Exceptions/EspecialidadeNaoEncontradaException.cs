@@ -1,4 +1,4 @@
-namespace Profissionais.App.Exceptions;
+namespace ProfissionaisService.application.Exceptions;
 
 public class EspecialidadeNaoEncontradaException : Exception
 {

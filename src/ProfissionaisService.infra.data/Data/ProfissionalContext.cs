@@ -1,27 +1,27 @@
 using Microsoft.EntityFrameworkCore;
-using Profissional.Domain.Aggregates.Midias;
-using Profissional.Domain.Aggregates.TipoProfissional;
-using Profissional.Infrastructure.Data.EntityConfigurations;
+using ProfissionaisService.domain.Aggregates.Midias;
+using ProfissionaisService.domain.Aggregates.TipoProfissional;
+using ProfissionaisService.infra.data.Data.EntityConfigurations;
 
-namespace Profissional.Infrastructure.Data;
+namespace ProfissionaisService.infra.data.Data;
 
 public class ProfissionalContext : DbContext
 {
-    public DbSet<Domain.Aggregates.Profissional.Profissional> Profissionais =>
-        Set<Domain.Aggregates.Profissional.Profissional>();
+    public ProfissionalContext(DbContextOptions<ProfissionalContext> options) : base(options)
+    {
+    }
+
+    public DbSet<domain.Aggregates.Profissional.Profissional> Profissionais =>
+        Set<domain.Aggregates.Profissional.Profissional>();
 
     public DbSet<TipoProfissional> TiposProfissional => Set<TipoProfissional>();
     public DbSet<Especialidade> Especialidades => Set<Especialidade>();
     public DbSet<MidiaAbstract> Midias => Set<MidiaAbstract>();
     public DbSet<TipoMidia> TiposMidia => Set<TipoMidia>();
 
-    //TODO Ajustar a connection string
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder
-            .UseMySql("server=localhost;database=profissionais;user=root;password=root",
-                ServerVersion.Parse("8.0.28-mysql")).UseSnakeCaseNamingConvention();
-        optionsBuilder.EnableSensitiveDataLogging();
+        optionsBuilder.UseSnakeCaseNamingConvention();
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

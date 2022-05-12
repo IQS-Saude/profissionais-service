@@ -1,10 +1,10 @@
-using Profissional.Domain.Aggregates.Midias;
-using Profissional.Domain.Aggregates.TipoProfissional;
-using Profissional.Domain.Events;
-using Profissional.Domain.Exceptions;
-using Profissional.Domain.SeedWork;
+using ProfissionaisService.domain.Aggregates.Midias;
+using ProfissionaisService.domain.Aggregates.TipoProfissional;
+using ProfissionaisService.domain.Events;
+using ProfissionaisService.domain.Exceptions;
+using ProfissionaisService.domain.SeedWork;
 
-namespace Profissional.Domain.Aggregates.Profissional;
+namespace ProfissionaisService.domain.Aggregates.Profissional;
 
 public class Profissional : Entity, IAggregateRoot
 {

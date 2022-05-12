@@ -1,10 +1,10 @@
 using MediatR;
-using Profissionais.App.DTO;
-using Profissionais.App.Ports;
-using Profissionais.App.Queries;
-using Profissional.Domain.Exceptions;
+using ProfissionaisService.application.DTO;
+using ProfissionaisService.application.Ports;
+using ProfissionaisService.application.Queries;
+using ProfissionaisService.domain.Exceptions;
 
-namespace Profissionais.App.QueryHandlers;
+namespace ProfissionaisService.application.QueryHandlers;
 
 public class BuscarProfissionalPorUrlAmigavelQueryHandler : IRequestHandler<BuscarProfissionalPorUrlAmigavelQuery,
     BuscarProfissionalPorUrlAmigavelResponse>

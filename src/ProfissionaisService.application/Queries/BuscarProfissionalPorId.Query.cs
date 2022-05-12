@@ -1,7 +1,7 @@
 using MediatR;
-using Profissionais.App.DTO;
+using ProfissionaisService.application.DTO;
 
-namespace Profissionais.App.Queries;
+namespace ProfissionaisService.application.Queries;
 
 public class BuscarProfissionalPorIdQuery : IRequest<BuscarProfissionalPorIdResponse>
 {

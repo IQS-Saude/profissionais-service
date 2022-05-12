@@ -1,6 +1,6 @@
-using Profissional.Domain.SeedWork;
+using ProfissionaisService.domain.SeedWork;
 
-namespace Profissional.Domain.Aggregates.TipoProfissional;
+namespace ProfissionaisService.domain.Aggregates.TipoProfissional;
 
 public class Especialidade : Entity
 {

@@ -1,6 +1,6 @@
-using Profissionais.App.DTO;
+using ProfissionaisService.application.DTO;
 
-namespace Profissionais.App.Ports;
+namespace ProfissionaisService.application.Ports;
 
 public interface IBuscarProfissionalPorIdQueryService
 {

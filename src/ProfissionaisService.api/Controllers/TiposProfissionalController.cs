@@ -1,11 +1,11 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Profissionais.App.Commands;
-using Profissionais.App.DTO;
-using Profissionais.App.Queries;
-using Profissional.API.DTO;
+using ProfissionaisService.api.Dto;
+using ProfissionaisService.application.Commands;
+using ProfissionaisService.application.DTO;
+using ProfissionaisService.application.Queries;
 
-namespace Profissional.API.Controllers;
+namespace ProfissionaisService.api.Controllers;
 
 [ApiController]
 [Route("tipos-profissional")]
