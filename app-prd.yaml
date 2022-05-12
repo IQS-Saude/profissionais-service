@@ -1,0 +1,115 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: prd-iqs-services
+  name: profissionais-service
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: profissionais-service
+  replicas: 1
+  minReadySeconds: 30
+  strategy:
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: profissionais-service
+    spec:
+      containers:
+        - image: registry.digitalocean.com/iqs-site-applications-images/profissionais-service:IMAGE_TAG
+          imagePullPolicy: Always
+          name: profissionais-service
+          volumeMounts:
+            - name: mysql-cert
+              mountPath: /etc/ssl/certs/do-mysql-cert.crt
+              subPath: do-mysql-cert.crt
+              readOnly: false
+          resources:
+            requests:
+              cpu: 0.1
+              memory: 128Mi
+            limits:
+              memory: 256Mi
+              cpu: 0.2
+          env:
+            - name: ConnectionStrings__Default
+              valueFrom:
+                secretKeyRef:
+                  name: profissionais-service
+                  key: connectionStrings__default
+          ports:
+            - containerPort: 80
+      volumes:
+        - name: mysql-cert
+          configMap:
+            name: mysql-cert
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: prd-iqs-services
+  name: profissionais-service
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  type: NodePort
+  selector:
+    app.kubernetes.io/name: profissionais-service
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-profissionais-service
+  namespace: prd-iqs-services
+  annotations:
+    cert-manager.io/issuer: letsencrypt-nginx
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - aquiagenda.com.br
+      secretName: letsencrypt-nginx
+  rules:
+    - host: aquiagenda.com.br
+      http:
+        paths:
+          - path: /profissionais
+            pathType: Prefix
+            backend:
+              service:
+                name: profissionais-service
+                port:
+                  number: 80
+---
+# HPA
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: profissionais-service
+  namespace: prd-iqs-services
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: profissionais-service
+  minReplicas: 1
+  maxReplicas: 2
+  targetCPUUtilizationPercentage: 80
+---
+# PDB
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: profissionais-service
+  namespace: prd-iqs-services
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: profissionais-service
+  minAvailable: 100%
