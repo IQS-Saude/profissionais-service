@@ -30,6 +30,7 @@ public static class NativeInjectorBootstrapper
         serviceCollection
             .AddScoped<IBuscarProfissionalPorUrlAmigavelQueryService, BuscarProfissionalPorUrlAmigavelQueryService>();
         serviceCollection.AddScoped<IBuscarTiposProfissionalQueryService, BuscarTiposProfissionalQueryService>();
+        serviceCollection.AddScoped<IDashboardQueryService, DashboardQueryService>();
     }
 
     private static void RegisterRepositories(IServiceCollection serviceCollection)

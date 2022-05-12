@@ -41,7 +41,7 @@ public class ProfissionalController : ApiController
         }
     }
 
-    [HttpPut("/admin")]
+    [HttpPatch("/admin")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<AlterarProfissionalResponse>))]
     public async Task<IActionResult> Alterar([FromBody] AlterarProfissionalRequest request)
     {
@@ -222,11 +222,29 @@ public class ProfissionalController : ApiController
         try
         {
             var response = await Mediator.Send(new BuscarProfissionalPorIdQuery(id));
+
             return Ok(Success(response));
         }
         catch (Exception e)
         {
             return NotFound(Error(e.Message));
+        }
+    }
+
+    [HttpGet("/dashboard")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<DashboardResponse>))]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorResponse<string>))]
+    public async Task<IActionResult> Dashboard()
+    {
+        try
+        {
+            var response = await Mediator.Send(new DashboardQuery());
+
+            return Ok(Success(response));
+        }
+        catch (Exception e)
+        {
+            return BadRequest(Error(e.Message));
         }
     }
 }
