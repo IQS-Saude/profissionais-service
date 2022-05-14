@@ -20,9 +20,14 @@ public class
     public async Task<BuscarProfissionaisAdminResponse> Handle(BuscarProfissionaisAdminQuery request,
         CancellationToken cancellationToken)
     {
-        return new BuscarProfissionaisAdminResponse(
-            await _buscarProfissionaisAdminQueryService.BuscarProfissionaisPorStatus(request.Status, request.Pagina,
-                request.Limite), request.Pagina, request.Limite,
-            await _buscarProfissionaisAdminQueryService.ContarProfissionaisPorStatus(request.Status));
+        var profissionais = await _buscarProfissionaisAdminQueryService.BuscarProfissionaisPorStatus(request.Status,
+            request.Pagina,
+            request.Limite);
+        var totalProfissionais =
+            await _buscarProfissionaisAdminQueryService.ContarProfissionaisPorStatus(request.Status);
+
+        return new BuscarProfissionaisAdminResponse(profissionais
+            , request.Pagina, profissionais.Length, totalProfissionais
+        );
     }
 }
