@@ -20,6 +20,7 @@ public record AlterarProfissionalResponse
     public string? Instagram { get; set; }
     public string? Youtube { get; set; }
     public string? Linkedin { get; set; }
+
     public bool Recomendado { get; set; }
     public bool Status { get; set; }
     public List<int> Especialidades { get; set; }

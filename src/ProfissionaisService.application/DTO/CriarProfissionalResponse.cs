@@ -1,3 +1,6 @@
+using System.Text.Json.Serialization;
+using ProfissionaisService.common.Json.Converters;
+
 namespace ProfissionaisService.application.DTO;
 
 public record CriarProfissionalResponse
@@ -20,7 +23,12 @@ public record CriarProfissionalResponse
     public string? Instagram { get; set; }
     public string? Youtube { get; set; }
     public string? Linkedin { get; set; }
+
+    [JsonConverter(typeof(StringBoolJsonConverter))]
     public bool Recomendado { get; set; }
+
+    [JsonConverter(typeof(StringBoolJsonConverter))]
     public bool Status { get; set; }
+
     public List<int> Especialidades { get; set; }
 }

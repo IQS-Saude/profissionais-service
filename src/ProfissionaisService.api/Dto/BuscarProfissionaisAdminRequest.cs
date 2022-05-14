@@ -3,10 +3,11 @@ using ProfissionaisService.common.Json.Converters;
 
 namespace ProfissionaisService.api.Dto;
 
-public record WhatsappRequest
+public class BuscarProfissionaisAdminRequest
 {
-    public long Numero { get; set; }
-
     [JsonConverter(typeof(StringBoolJsonConverter))]
-    public bool Principal { get; set; }
+    public bool? Status { get; set; }
+
+    public int Pagina { get; set; }
+    public int Limite { get; set; }
 }

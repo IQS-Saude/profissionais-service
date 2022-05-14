@@ -30,10 +30,10 @@ public record AlterarProfissionalRequest
     public string? Youtube { get; set; }
     public string? Linkedin { get; set; }
 
-    [JsonConverter(typeof(StringBoolConverter))]
+    [JsonConverter(typeof(StringBoolJsonConverter))]
     public bool Recomendado { get; set; }
 
-    [JsonConverter(typeof(StringBoolConverter))]
+    [JsonConverter(typeof(StringBoolJsonConverter))]
     public bool Status { get; set; }
 
     public List<int> Especialidades { get; set; }

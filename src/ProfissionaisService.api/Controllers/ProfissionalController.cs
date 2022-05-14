@@ -17,6 +17,26 @@ public class ProfissionalController : ApiController
 
     private IMediator Mediator { get; }
 
+    [HttpGet("/admin")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<BuscarProfissionaisAdminResponse>))]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ErrorResponse<string>))]
+    public async Task<IActionResult> ListarAdmin([FromQuery] BuscarProfissionaisAdminRequest request)
+    {
+        try
+        {
+            var response =
+                await Mediator.Send(
+                    new BuscarProfissionaisAdminQuery(request.Pagina, request.Limite, request.Status ?? true));
+
+            return Ok(Success(response));
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, Error(e.Message));
+        }
+    }
+
+
     [HttpPost("/admin")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<CriarProfissionalResponse>))]
     public async Task<IActionResult> Criar([FromBody] CriarProfissionalRequest request)

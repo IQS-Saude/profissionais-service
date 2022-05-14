@@ -1,3 +1,6 @@
+using System.Text.Json.Serialization;
+using ProfissionaisService.common.Json.Converters;
+
 namespace ProfissionaisService.application.DTO;
 
 public class BuscarProfissionaisResponse
@@ -42,7 +45,10 @@ public class ProfissionalResponse
     public string UrlAmigavel { get; }
     public string Tipo { get; }
     public string[] Especialidades { get; }
+
+    [JsonConverter(typeof(StringBoolJsonConverter))]
     public bool Recomendado { get; }
+
     public string ImagemPerfilUrl { get; }
     public int UnidadeId { get; }
     public long? Whatsapp { get; }
