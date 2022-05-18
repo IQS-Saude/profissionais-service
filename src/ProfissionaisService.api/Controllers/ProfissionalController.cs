@@ -26,7 +26,7 @@ public class ProfissionalController : ApiController
         {
             var response =
                 await Mediator.Send(
-                    new BuscarProfissionaisAdminQuery(request.Pagina, request.Limite, request.Status ?? true));
+                    new BuscarProfissionaisAdminQuery(request.Pagina, request.Limite, request.Status));
 
             return Ok(Success(response));
         }

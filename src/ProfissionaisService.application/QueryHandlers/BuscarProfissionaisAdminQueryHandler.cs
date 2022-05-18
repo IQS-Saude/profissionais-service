@@ -26,8 +26,7 @@ public class
         var totalProfissionais =
             await _buscarProfissionaisAdminQueryService.ContarProfissionaisPorStatus(request.Status);
 
-        return new BuscarProfissionaisAdminResponse(profissionais
-            , request.Pagina, profissionais.Length, totalProfissionais
-        );
+        return new BuscarProfissionaisAdminResponse(profissionais, request.Pagina, profissionais.Length,
+            totalProfissionais);
     }
 }

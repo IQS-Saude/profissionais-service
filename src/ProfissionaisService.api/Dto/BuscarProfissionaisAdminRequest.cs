@@ -3,11 +3,6 @@ using ProfissionaisService.common.Json.Converters;
 
 namespace ProfissionaisService.api.Dto;
 
-public class BuscarProfissionaisAdminRequest
-{
-    [JsonConverter(typeof(StringBoolJsonConverter))]
-    public bool? Status { get; set; }
-
-    public int Pagina { get; set; }
-    public int Limite { get; set; }
-}
+public record BuscarProfissionaisAdminRequest(int Pagina = 1, int Limite = 10,
+    [property: JsonConverter(typeof(StringBoolJsonConverter))]
+    bool Status = true);
