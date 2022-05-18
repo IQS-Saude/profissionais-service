@@ -86,6 +86,22 @@ public class ProfissionalController : ApiController
         }
     }
 
+    [HttpPatch("/admin/{id}/ativar")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<dynamic>))]
+    public async Task<IActionResult> Ativar(int id)
+    {
+        try
+        {
+            await Mediator.Send(new AtivarProfissionalCommand(id));
+
+            return Ok(Success(new { Message = "Profissional ativado!" }));
+        }
+        catch (Exception e)
+        {
+            return BadRequest(Error(e.Message));
+        }
+    }
+
     [HttpPatch("/admin/{id}/desativar")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<dynamic>))]
     public async Task<IActionResult> Desativar(int id)
@@ -94,7 +110,7 @@ public class ProfissionalController : ApiController
         {
             await Mediator.Send(new DesativarProfissionalCommand(id));
 
-            return Ok(Success(new { Message = "Profissional removido!" }));
+            return Ok(Success(new { Message = "Profissional desativado!" }));
         }
         catch (Exception e)
         {
