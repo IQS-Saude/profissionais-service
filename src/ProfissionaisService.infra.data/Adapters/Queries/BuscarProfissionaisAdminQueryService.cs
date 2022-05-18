@@ -19,8 +19,8 @@ public class BuscarProfissionaisAdminQueryService : IBuscarProfissionaisAdminQue
     {
         //TODO Adicionar Visualizacoes ao Profissional
         var query = _profissionalContext.Profissionais.Where(profissional => profissional.Status == status)
-            .Take(limite)
-            .Skip((pagina - 1) * limite);
+            .Skip((pagina - 1) * limite)
+            .Take(limite);
 
         if (nome is not null) query = query.Where(profissional => profissional.Nome.Contains(nome));
 

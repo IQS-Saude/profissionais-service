@@ -20,8 +20,8 @@ public class BuscarProfissionaisQueryService : IBuscarProfissionaisQueryService
     {
         var totalProfissionais = await ContarProfissionaisAtivos();
 
-        var dbQuery = ProfissionalContext.Profissionais.Where(profissional => profissional.Status).Take(query.Limite)
-            .Skip((query.Pagina - 1) * query.Limite);
+        var dbQuery = ProfissionalContext.Profissionais.Where(profissional => profissional.Status)
+            .Skip((query.Pagina - 1) * query.Limite).Take(query.Limite);
 
         if (query.Nome is not null) dbQuery = dbQuery.Where(profissional => profissional.Nome.Contains(query.Nome));
 
