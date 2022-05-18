@@ -102,6 +102,23 @@ public class ProfissionalController : ApiController
         }
     }
 
+    [HttpGet("/admin/{id}/tratamentos")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<List<string>>))]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorResponse<string>))]
+    public async Task<IActionResult> AdicionarTratamento(int id)
+    {
+        try
+        {
+            var response = await Mediator.Send(new BuscarTratamentosPorProfissionalIdQuery(id));
+
+            return Ok(Success(response));
+        }
+        catch (Exception e)
+        {
+            return NotFound(Error(e.Message));
+        }
+    }
+
     [HttpPost("/admin/{id}/tratamentos")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<List<string>>))]
     public async Task<IActionResult> AdicionarTratamento(int id, [FromBody] string descricao)
