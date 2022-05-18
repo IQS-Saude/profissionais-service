@@ -35,6 +35,8 @@ public static class NativeInjectorBootstrapper
         serviceCollection
             .AddScoped<IBuscarTratamentosPorProfissionalIdQueryService,
                 BuscarTratamentosPorProfissionalIdQueryService>();
+        serviceCollection
+            .AddScoped<IBuscarConveniosPorProfissionalIdQueryService, BuscarConveniosPorProfissionalIdQueryService>();
     }
 
     private static void RegisterRepositories(IServiceCollection serviceCollection)

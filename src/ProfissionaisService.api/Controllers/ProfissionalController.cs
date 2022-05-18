@@ -105,7 +105,7 @@ public class ProfissionalController : ApiController
     [HttpGet("/admin/{id}/tratamentos")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<List<string>>))]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorResponse<string>))]
-    public async Task<IActionResult> AdicionarTratamento(int id)
+    public async Task<IActionResult> BuscarTratamentos(int id)
     {
         try
         {
@@ -148,6 +148,23 @@ public class ProfissionalController : ApiController
         catch (Exception e)
         {
             return BadRequest(Error(e.Message));
+        }
+    }
+
+    [HttpGet("/admin/{id}/convenios")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<List<string>>))]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorResponse<string>))]
+    public async Task<IActionResult> BuscarConvenios(int id)
+    {
+        try
+        {
+            var response = await Mediator.Send(new BuscarConveniosPorProfissionalIdQuery(id));
+
+            return Ok(Success(response));
+        }
+        catch (Exception e)
+        {
+            return NotFound(Error(e.Message));
         }
     }
 
