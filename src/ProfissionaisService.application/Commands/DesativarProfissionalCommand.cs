@@ -2,9 +2,9 @@ using MediatR;
 
 namespace ProfissionaisService.application.Commands;
 
-public class RemoverProfissionalCommand : IRequest
+public class DesativarProfissionalCommand : IRequest
 {
-    public RemoverProfissionalCommand(int id)
+    public DesativarProfissionalCommand(int id)
     {
         Id = id;
     }

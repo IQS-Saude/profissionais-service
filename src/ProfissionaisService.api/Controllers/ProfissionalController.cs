@@ -86,13 +86,13 @@ public class ProfissionalController : ApiController
         }
     }
 
-    [HttpDelete("/admin/{id}")]
+    [HttpPatch("/admin/{id}/desativar")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<dynamic>))]
-    public async Task<IActionResult> Remover(int id)
+    public async Task<IActionResult> Desativar(int id)
     {
         try
         {
-            await Mediator.Send(new RemoverProfissionalCommand(id));
+            await Mediator.Send(new DesativarProfissionalCommand(id));
 
             return Ok(Success(new { Message = "Profissional removido!" }));
         }

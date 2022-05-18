@@ -5,22 +5,23 @@ using ProfissionaisService.domain.Exceptions;
 
 namespace ProfissionaisService.application.CommandHandlers;
 
-public class RemoverProfissionalCommandHandler : IRequestHandler<RemoverProfissionalCommand>
+public class DesativarProfissionalCommandHandler : IRequestHandler<DesativarProfissionalCommand>
 {
-    public RemoverProfissionalCommandHandler(IProfissionalRepository profissionalRepository)
+    public DesativarProfissionalCommandHandler(IProfissionalRepository profissionalRepository)
     {
         ProfissionalRepository = profissionalRepository;
     }
 
     private IProfissionalRepository ProfissionalRepository { get; }
 
-    public async Task<Unit> Handle(RemoverProfissionalCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(DesativarProfissionalCommand request, CancellationToken cancellationToken)
     {
         var profissional = await ProfissionalRepository.BuscarPorId(request.Id);
 
         if (profissional is null) throw new ProfissionalNaoEncontradoException();
 
-        await ProfissionalRepository.Remover(profissional);
+        profissional.MudarStatus(false);
+        await ProfissionalRepository.Alterar(profissional);
 
         return Unit.Value;
     }
