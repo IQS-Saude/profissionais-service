@@ -200,6 +200,23 @@ public class ProfissionalController : ApiController
         }
     }
 
+    [HttpGet("/admin/{id}/whatsapps")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<List<WhatsappResponse>>))]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorResponse<string>))]
+    public async Task<IActionResult> BuscarWhatsapps(int id)
+    {
+        try
+        {
+            var response = await Mediator.Send(new BuscarWhatsappsPorProfissionalIdQuery(id));
+
+            return Ok(Success(response));
+        }
+        catch (Exception e)
+        {
+            return NotFound(Error(e.Message));
+        }
+    }
+
     [HttpPost("/admin/{id}/whatsapps")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<List<WhatsappResponse>>))]
     public async Task<IActionResult> AdicionarWhatsapp(int id, [FromBody] WhatsappRequest request)
