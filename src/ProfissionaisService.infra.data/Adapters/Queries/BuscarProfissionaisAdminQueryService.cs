@@ -14,17 +14,22 @@ public class BuscarProfissionaisAdminQueryService : IBuscarProfissionaisAdminQue
         _profissionalContext = profissionalContext;
     }
 
-    public async Task<ProfissionalAdmin[]> BuscarProfissionaisPorStatus(bool status, int pagina, int limite)
+    public async Task<ProfissionalAdmin[]> BuscarProfissionaisPorStatus(bool status, string? nome, int pagina,
+        int limite)
     {
         //TODO Adicionar Visualizacoes ao Profissional
-        return await _profissionalContext.Profissionais.Where(profissional => profissional.Status == status)
+        var query = _profissionalContext.Profissionais.Where(profissional => profissional.Status == status)
             .Take(limite)
-            .Skip((pagina - 1) * limite).Select(profissional => new ProfissionalAdmin(profissional.Id,
+            .Skip((pagina - 1) * limite);
+
+        if (nome is not null) query = query.Where(profissional => profissional.Nome.Contains(nome));
+
+        return await query.Select(profissional => new ProfissionalAdmin(profissional.Id,
                 profissional.Nome, profissional.UnidadeId, 00, profissional.Recomendado, profissional.Status))
             .ToArrayAsync();
     }
 
-    public async Task<int> ContarProfissionaisPorStatus(bool status)
+    public async Task<int> ContarProfissionaisPorStatusENome(bool status)
     {
         return await _profissionalContext.Profissionais.CountAsync(profissional => profissional.Status == status);
     }

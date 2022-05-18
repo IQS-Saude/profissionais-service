@@ -21,10 +21,11 @@ public class
         CancellationToken cancellationToken)
     {
         var profissionais = await _buscarProfissionaisAdminQueryService.BuscarProfissionaisPorStatus(request.Status,
+            request.Nome,
             request.Pagina,
             request.Limite);
         var totalProfissionais =
-            await _buscarProfissionaisAdminQueryService.ContarProfissionaisPorStatus(request.Status);
+            await _buscarProfissionaisAdminQueryService.ContarProfissionaisPorStatusENome(request.Status);
 
         return new BuscarProfissionaisAdminResponse(profissionais, request.Pagina, profissionais.Length,
             totalProfissionais);
