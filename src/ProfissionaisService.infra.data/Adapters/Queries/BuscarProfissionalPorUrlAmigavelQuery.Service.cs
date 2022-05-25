@@ -20,7 +20,8 @@ public class BuscarProfissionalPorUrlAmigavelQueryService : IBuscarProfissionalP
             .Where(profissional => profissional.UrlAmigavel == urlAmigavel).Select(profissional =>
                 new BuscarProfissionalPorUrlAmigavelResponse(profissional.Id, profissional.Nome, "",
                     new EnderecoResponse(profissional.Endereco.Estado, profissional.Endereco.Cidade,
-                        profissional.Endereco.Logradouro, profissional.Endereco.Bairro, profissional.Endereco.Cep),
+                        profissional.Endereco.Logradouro, profissional.Endereco.Numero, profissional.Endereco.Bairro,
+                        profissional.Endereco.Cep),
                     profissional.TipoProfissional.Descricao,
                     profissional.Especialidades.Select(e => e.Descricao).ToArray(), profissional.Conselho,
                     profissional.NumeroIdentificacao, profissional.Celular, profissional.Telefone,

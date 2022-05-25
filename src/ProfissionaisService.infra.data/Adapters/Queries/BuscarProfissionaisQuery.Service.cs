@@ -37,7 +37,8 @@ public class BuscarProfissionaisQueryService : IBuscarProfissionaisQueryService
 
         var profissionais = await dbQuery.Select(profissional => new ProfissionalResponse(profissional.Nome,
             new EnderecoResponse(profissional.Endereco.Estado, profissional.Endereco.Cidade,
-                profissional.Endereco.Logradouro, profissional.Endereco.Bairro, profissional.Endereco.Cep),
+                profissional.Endereco.Logradouro, profissional.Endereco.Numero, profissional.Endereco.Bairro,
+                profissional.Endereco.Cep),
             profissional.UrlAmigavel, profissional.TipoProfissional.Descricao,
             profissional.Especialidades.Select(e => e.Descricao).ToArray(), profissional.Recomendado, "",
             profissional.UnidadeId,
