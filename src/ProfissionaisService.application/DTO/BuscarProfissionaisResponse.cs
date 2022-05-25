@@ -21,11 +21,13 @@ public class BuscarProfissionaisResponse
 
 public class ProfissionalResponse
 {
-    public ProfissionalResponse(string nome, string urlAmigavel, string tipo, string[] especialidades, bool recomendado,
+    public ProfissionalResponse(string nome, EnderecoResponse endereco, string urlAmigavel, string tipo,
+        string[] especialidades, bool recomendado,
         string imagemPerfilUrl, int unidadeId, long? whatsapp, string? email, string? site, string? facebook,
         string? instagram, string? youtube, string? linkedin)
     {
         Nome = nome;
+        Endereco = endereco;
         UrlAmigavel = urlAmigavel;
         Tipo = tipo;
         Especialidades = especialidades;
@@ -42,6 +44,7 @@ public class ProfissionalResponse
     }
 
     public string Nome { get; }
+    public EnderecoResponse Endereco { get; }
     public string UrlAmigavel { get; }
     public string Tipo { get; }
     public string[] Especialidades { get; }
