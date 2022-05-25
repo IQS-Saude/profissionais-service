@@ -137,7 +137,7 @@ public class ProfissionalController : ApiController
 
     [HttpPost("/admin/{id}/tratamentos")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<List<string>>))]
-    public async Task<IActionResult> AdicionarTratamento(int id, [FromQuery] string descricao)
+    public async Task<IActionResult> AdicionarTratamento(int id, [FromForm] string descricao)
     {
         try
         {
@@ -153,7 +153,7 @@ public class ProfissionalController : ApiController
 
     [HttpDelete("/admin/{id}/tratamentos")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<List<string>>))]
-    public async Task<IActionResult> RemoverTratamento(int id, [FromQuery] string descricao)
+    public async Task<IActionResult> RemoverTratamento(int id, [FromForm] string descricao)
     {
         try
         {
@@ -186,7 +186,7 @@ public class ProfissionalController : ApiController
 
     [HttpPost("/admin/{id}/convenios")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<List<string>>))]
-    public async Task<IActionResult> AdicionarConvenio(int id, [FromQuery] string descricao)
+    public async Task<IActionResult> AdicionarConvenio(int id, [FromForm] string descricao)
     {
         try
         {
@@ -202,7 +202,7 @@ public class ProfissionalController : ApiController
 
     [HttpDelete("/admin/{id}/convenios")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<List<string>>))]
-    public async Task<IActionResult> RemoverConvenio(int id, [FromQuery] string descricao)
+    public async Task<IActionResult> RemoverConvenio(int id, [FromForm] string descricao)
     {
         try
         {
