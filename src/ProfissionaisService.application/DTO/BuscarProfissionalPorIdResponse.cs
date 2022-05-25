@@ -6,7 +6,7 @@ namespace ProfissionaisService.application.DTO;
 public class BuscarProfissionalPorIdResponse
 {
     public BuscarProfissionalPorIdResponse(int id, string nome, string urlAmigavel, int unidadeId,
-        string imagemPerfilUrl,
+        string imagemUrlPerfil,
         EnderecoResponse endereco, string tipo, string[] especialidades, string? conselho, string? numeroIdentificacao,
         long? celular, long? telefone, string? facebook, string? instagram, string? linkedin, string? youtube,
         string? email, string? site, string? sobre, bool recomendado, bool status)
@@ -15,7 +15,7 @@ public class BuscarProfissionalPorIdResponse
         Nome = nome;
         UrlAmigavel = urlAmigavel;
         UnidadeId = unidadeId;
-        ImagemPerfilUrl = imagemPerfilUrl;
+        ImagemUrlPerfil = imagemUrlPerfil;
         Endereco = endereco;
         Tipo = tipo;
         Especialidades = especialidades;
@@ -38,7 +38,7 @@ public class BuscarProfissionalPorIdResponse
     public string Nome { get; }
     public string UrlAmigavel { get; }
     public int UnidadeId { get; }
-    public string ImagemPerfilUrl { get; }
+    public string ImagemUrlPerfil { get; }
     public EnderecoResponse Endereco { get; }
     public string Tipo { get; }
     public string[] Especialidades { get; }
