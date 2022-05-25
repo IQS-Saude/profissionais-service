@@ -18,7 +18,7 @@ public class ProfissionalController : ApiController
     private IMediator Mediator { get; }
 
     [HttpGet("/admin")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<BuscarProfissionaisAdminResponse>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessResponse<BuscarProfissionaisAdminResponse>))]
     [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ErrorResponse<string>))]
     public async Task<IActionResult> ListarAdmin([FromQuery] BuscarProfissionaisAdminRequest request)
     {
@@ -38,7 +38,7 @@ public class ProfissionalController : ApiController
 
 
     [HttpPost("/admin")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<CriarProfissionalResponse>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessResponse<CriarProfissionalResponse>))]
     public async Task<IActionResult> Criar([FromBody] CriarProfissionalRequest request)
     {
         try
@@ -62,7 +62,7 @@ public class ProfissionalController : ApiController
     }
 
     [HttpPatch("/admin")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<AlterarProfissionalResponse>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessResponse<AlterarProfissionalResponse>))]
     public async Task<IActionResult> Alterar([FromBody] AlterarProfissionalRequest request)
     {
         try
@@ -87,7 +87,7 @@ public class ProfissionalController : ApiController
     }
 
     [HttpPatch("/admin/{id}/ativar")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<dynamic>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessResponse<dynamic>))]
     public async Task<IActionResult> Ativar(int id)
     {
         try
@@ -103,7 +103,7 @@ public class ProfissionalController : ApiController
     }
 
     [HttpPatch("/admin/{id}/desativar")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<dynamic>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessResponse<dynamic>))]
     public async Task<IActionResult> Desativar(int id)
     {
         try
@@ -119,7 +119,7 @@ public class ProfissionalController : ApiController
     }
 
     [HttpGet("/admin/{id}/tratamentos")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<List<string>>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessResponse<List<string>>))]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorResponse<string>))]
     public async Task<IActionResult> BuscarTratamentos(int id)
     {
@@ -136,7 +136,7 @@ public class ProfissionalController : ApiController
     }
 
     [HttpPost("/admin/{id}/tratamentos")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<List<string>>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessResponse<List<string>>))]
     public async Task<IActionResult> AdicionarTratamento(int id, [FromForm] string descricao)
     {
         try
@@ -152,7 +152,7 @@ public class ProfissionalController : ApiController
     }
 
     [HttpDelete("/admin/{id}/tratamentos")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<List<string>>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessResponse<List<string>>))]
     public async Task<IActionResult> RemoverTratamento(int id, [FromForm] string descricao)
     {
         try
@@ -168,7 +168,7 @@ public class ProfissionalController : ApiController
     }
 
     [HttpGet("/admin/{id}/convenios")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<List<string>>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessResponse<List<string>>))]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorResponse<string>))]
     public async Task<IActionResult> BuscarConvenios(int id)
     {
@@ -185,7 +185,7 @@ public class ProfissionalController : ApiController
     }
 
     [HttpPost("/admin/{id}/convenios")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<List<string>>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessResponse<List<string>>))]
     public async Task<IActionResult> AdicionarConvenio(int id, [FromForm] string descricao)
     {
         try
@@ -201,7 +201,7 @@ public class ProfissionalController : ApiController
     }
 
     [HttpDelete("/admin/{id}/convenios")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<List<string>>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessResponse<List<string>>))]
     public async Task<IActionResult> RemoverConvenio(int id, [FromForm] string descricao)
     {
         try
@@ -217,7 +217,7 @@ public class ProfissionalController : ApiController
     }
 
     [HttpGet("/admin/{id}/whatsapps")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<List<WhatsappResponse>>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessResponse<List<WhatsappResponse>>))]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorResponse<string>))]
     public async Task<IActionResult> BuscarWhatsapps(int id)
     {
@@ -234,7 +234,7 @@ public class ProfissionalController : ApiController
     }
 
     [HttpPost("/admin/{id}/whatsapps")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<List<WhatsappResponse>>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessResponse<List<WhatsappResponse>>))]
     public async Task<IActionResult> AdicionarWhatsapp(int id, [FromBody] WhatsappRequest request)
     {
         try
@@ -250,7 +250,7 @@ public class ProfissionalController : ApiController
     }
 
     [HttpDelete("/admin/{id}/whatsapps")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<List<WhatsappResponse>>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessResponse<List<WhatsappResponse>>))]
     public async Task<IActionResult> RemoverWhatsapp(int id, [FromBody] WhatsappRequest request)
     {
         try
@@ -267,7 +267,7 @@ public class ProfissionalController : ApiController
 
 
     [HttpGet("/site")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<BuscarProfissionaisResponse>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessResponse<BuscarProfissionaisResponse>))]
     public async Task<IActionResult> BuscarProfissionais([FromQuery] BuscarProfissionaisRequest request)
     {
         var response = await Mediator.Send(new BuscarProfissionaisQuery
@@ -285,7 +285,7 @@ public class ProfissionalController : ApiController
 
     [HttpGet("/site/{urlAmigavel}")]
     [ProducesResponseType(StatusCodes.Status200OK,
-        Type = typeof(SucessResponse<BuscarProfissionalPorUrlAmigavelResponse>))]
+        Type = typeof(SuccessResponse<BuscarProfissionalPorUrlAmigavelResponse>))]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorResponse<string>))]
     public async Task<IActionResult> BuscarProfissionalPorUrlAmigavel(
         string urlAmigavel)
@@ -302,7 +302,7 @@ public class ProfissionalController : ApiController
     }
 
     [HttpGet("/admin/{id}")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<BuscarProfissionalPorIdResponse>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessResponse<BuscarProfissionalPorIdResponse>))]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorResponse<string>))]
     public async Task<IActionResult> BuscarProfissionalPorId(int id)
     {
@@ -319,7 +319,7 @@ public class ProfissionalController : ApiController
     }
 
     [HttpGet("/dashboard")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SucessResponse<DashboardResponse>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessResponse<DashboardResponse>))]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorResponse<string>))]
     public async Task<IActionResult> Dashboard()
     {

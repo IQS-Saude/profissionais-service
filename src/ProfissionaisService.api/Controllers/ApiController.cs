@@ -5,9 +5,9 @@ namespace ProfissionaisService.api.Controllers;
 
 public class ApiController : ControllerBase
 {
-    protected SucessResponse<T> Success<T>(T data)
+    protected SuccessResponse<T> Success<T>(T data)
     {
-        return new SucessResponse<T>(data);
+        return new SuccessResponse<T>(data);
     }
 
     protected ErrorResponse<T> Error<T>(T error)

@@ -20,7 +20,7 @@ public class TiposProfissionalController : ApiController
 
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK,
-        Type = typeof(SucessResponse<List<BuscarTiposProfissionalResponse>>))]
+        Type = typeof(SuccessResponse<List<BuscarTiposProfissionalResponse>>))]
     public async Task<IActionResult> Buscar()
     {
         try
@@ -37,7 +37,7 @@ public class TiposProfissionalController : ApiController
 
     [HttpPut]
     [ProducesResponseType(StatusCodes.Status200OK,
-        Type = typeof(SucessResponse<SalvarTipoProfissionalResponse>))]
+        Type = typeof(SuccessResponse<SalvarTipoProfissionalResponse>))]
     public async Task<IActionResult> Salvar([FromBody] SalvarTipoProfissionalRequest request)
     {
         try

@@ -1,3 +1,3 @@
 namespace ProfissionaisService.api.Dto;
 
-public record SucessResponse<T>(T Data) : Response(true);
+public record SuccessResponse<T>(T Data) : Response(true);
