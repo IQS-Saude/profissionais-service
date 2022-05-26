@@ -24,6 +24,6 @@ public class AdicionarConvenioCommandHandler : IRequestHandler<AdicionarConvenio
         profissional.AdicionarConvenio(new Convenio(request.Descricao));
         profissional = await ProfissionalRepository.Alterar(profissional);
 
-        return profissional.Tratamentos.Select(e => e.Descricao).ToList();
+        return profissional.Convenios.Select(e => e.Descricao).ToList();
     }
 }

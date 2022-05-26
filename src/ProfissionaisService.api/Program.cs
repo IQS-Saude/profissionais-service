@@ -2,6 +2,7 @@ using ProfissionaisService.infra.Crosscutting.IoC.Configuration;
 using ProfissionaisService.infra.Crosscutting.IoC.Configuration.Database;
 using ProfissionaisService.infra.Crosscutting.IoC.Configuration.Swagger;
 
+//TODO Renomear projetos
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
