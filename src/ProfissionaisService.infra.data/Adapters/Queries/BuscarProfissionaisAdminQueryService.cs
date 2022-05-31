@@ -18,13 +18,12 @@ public class BuscarProfissionaisAdminQueryService : IBuscarProfissionaisAdminQue
         int limite)
     {
         //TODO Adicionar Visualizacoes ao Profissional
-        var query = _profissionalContext.Profissionais.Where(profissional => profissional.Status == status)
-            .Skip((pagina - 1) * limite)
-            .Take(limite);
+        var query = _profissionalContext.Profissionais.Where(profissional => profissional.Status == status);
 
         if (nome is not null) query = query.Where(profissional => profissional.Nome.Contains(nome));
 
-        return await query.Select(profissional => new ProfissionalAdmin(profissional.Id,
+        return await query.Skip((pagina - 1) * limite)
+            .Take(limite).Select(profissional => new ProfissionalAdmin(profissional.Id,
                 profissional.Nome, profissional.UnidadeId, 00, profissional.Recomendado, profissional.Status))
             .ToArrayAsync();
     }

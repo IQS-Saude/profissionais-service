@@ -20,8 +20,7 @@ public class BuscarProfissionaisQueryService : IBuscarProfissionaisQueryService
     {
         var totalProfissionais = await ContarProfissionaisAtivos();
 
-        var dbQuery = ProfissionalContext.Profissionais.Where(profissional => profissional.Status)
-            .Skip((query.Pagina - 1) * query.Limite).Take(query.Limite);
+        var dbQuery = ProfissionalContext.Profissionais.Where(profissional => profissional.Status);
 
         if (query.Nome is not null) dbQuery = dbQuery.Where(profissional => profissional.Nome.Contains(query.Nome));
 
@@ -36,16 +35,19 @@ public class BuscarProfissionaisQueryService : IBuscarProfissionaisQueryService
             dbQuery = dbQuery.Where(profissional => profissional.TipoProfissional.Id == query.TipoProfissionalId);
 
         //TODO COrrigir esse erro nullable
-        var profissionais = await dbQuery.Select(profissional => new ProfissionalResponse(profissional.Nome,
-            new EnderecoResponse(profissional.Endereco.Estado, profissional.Endereco.Cidade,
-                profissional.Endereco.Logradouro, profissional.Endereco.Numero, profissional.Endereco.Bairro,
-                profissional.Endereco.Cep),
-            profissional.UrlAmigavel, profissional.TipoProfissional.Descricao,
-            profissional.Especialidades.Select(e => e.Descricao).ToArray(), profissional.Recomendado,
-            profissional.ImagemUrlPerfil,
-            profissional.UnidadeId,
-            profissional.Whatsapps.FirstOrDefault(w => w.Principal).Numero, profissional.Email, profissional.Site,
-            profissional.Facebook, profissional.Instagram, profissional.Youtube, profissional.Linkedin)).ToArrayAsync();
+        var profissionais = await dbQuery
+            .Skip((query.Pagina - 1) * query.Limite).Take(query.Limite).Select(profissional => new ProfissionalResponse(
+                profissional.Nome,
+                new EnderecoResponse(profissional.Endereco.Estado, profissional.Endereco.Cidade,
+                    profissional.Endereco.Logradouro, profissional.Endereco.Numero, profissional.Endereco.Bairro,
+                    profissional.Endereco.Cep),
+                profissional.UrlAmigavel, profissional.TipoProfissional.Descricao,
+                profissional.Especialidades.Select(e => e.Descricao).ToArray(), profissional.Recomendado,
+                profissional.ImagemUrlPerfil,
+                profissional.UnidadeId,
+                profissional.Whatsapps.FirstOrDefault(w => w.Principal).Numero, profissional.Email, profissional.Site,
+                profissional.Facebook, profissional.Instagram, profissional.Youtube, profissional.Linkedin))
+            .ToArrayAsync();
 
         return new BuscarProfissionaisResponse(profissionais, query.Pagina, profissionais.Length, totalProfissionais);
     }
