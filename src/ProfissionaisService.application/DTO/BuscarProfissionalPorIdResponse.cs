@@ -7,7 +7,8 @@ public class BuscarProfissionalPorIdResponse
 {
     public BuscarProfissionalPorIdResponse(int id, string nome, string urlAmigavel, int unidadeId,
         string imagemUrlPerfil,
-        EnderecoResponse endereco, string tipo, string[] especialidades, string? conselho, string? numeroIdentificacao,
+        EnderecoResponse endereco, int tipoProfissionalId, int[] especialidadesIds, string? conselho,
+        string? numeroIdentificacao,
         long? celular, long? telefone, string? facebook, string? instagram, string? linkedin, string? youtube,
         string? email, string? site, string? sobre, bool recomendado, bool status)
     {
@@ -17,8 +18,8 @@ public class BuscarProfissionalPorIdResponse
         UnidadeId = unidadeId;
         ImagemUrlPerfil = imagemUrlPerfil;
         Endereco = endereco;
-        Tipo = tipo;
-        Especialidades = especialidades;
+        TipoProfissionalId = tipoProfissionalId;
+        EspecialidadesIds = especialidadesIds;
         Conselho = conselho;
         NumeroIdentificacao = numeroIdentificacao;
         Celular = celular;
@@ -40,8 +41,8 @@ public class BuscarProfissionalPorIdResponse
     public int UnidadeId { get; }
     public string ImagemUrlPerfil { get; }
     public EnderecoResponse Endereco { get; }
-    public string Tipo { get; }
-    public string[] Especialidades { get; }
+    public int TipoProfissionalId { get; }
+    public int[] EspecialidadesIds { get; }
     public string? Conselho { get; }
     public string? NumeroIdentificacao { get; }
     public long? Celular { get; }
