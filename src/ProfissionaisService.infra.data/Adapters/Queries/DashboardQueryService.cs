@@ -19,6 +19,6 @@ public class DashboardQueryService : IDashboardQueryService
         var ativos = await _profissionalContext.Profissionais.CountAsync(profissional => profissional.Status);
         var inativos = await _profissionalContext.Profissionais.CountAsync(profissional => !profissional.Status);
 
-        return new DashboardResponse(ativos, inativos);
+        return new DashboardResponse(ativos, inativos, "profissionais");
     }
 }
