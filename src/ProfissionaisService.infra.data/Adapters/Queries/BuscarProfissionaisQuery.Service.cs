@@ -18,7 +18,8 @@ public class BuscarProfissionaisQueryService : IBuscarProfissionaisQueryService
 
     public async Task<BuscarProfissionaisResponse> BuscarProfissionais(BuscarProfissionaisQuery query)
     {
-        var totalProfissionais = await ContarProfissionaisAtivos();
+        var totalProfissionais = await ContarProfissionais(query.Nome, query.UnidadeId, query.EspecialidadeId,
+            query.TipoProfissionalId);
 
         var dbQuery = ProfissionalContext.Profissionais.Where(profissional => profissional.Status);
 
@@ -52,8 +53,23 @@ public class BuscarProfissionaisQueryService : IBuscarProfissionaisQueryService
         return new BuscarProfissionaisResponse(profissionais, query.Pagina, profissionais.Length, totalProfissionais);
     }
 
-    public async Task<int> ContarProfissionaisAtivos()
+    private async Task<int> ContarProfissionais(string? nome, int? unidadeId, int? especialidadeId,
+        int? tipoProfissionalId)
     {
-        return await ProfissionalContext.Profissionais.CountAsync(profissional => profissional.Status);
+        var queryCount = ProfissionalContext.Profissionais.Where(profissional => profissional.Status);
+
+        if (nome is not null) queryCount = queryCount.Where(profissional => profissional.Nome.Contains(nome));
+
+        if (unidadeId is not null)
+            queryCount = queryCount.Where(profissional => profissional.UnidadeId == unidadeId);
+
+        if (especialidadeId is not null)
+            queryCount = queryCount.Where(profissional =>
+                profissional.Especialidades.Any(especialidade => especialidade.Id == especialidadeId));
+
+        if (tipoProfissionalId is not null)
+            queryCount = queryCount.Where(profissional => profissional.TipoProfissional.Id == tipoProfissionalId);
+
+        return await queryCount.CountAsync();
     }
 }

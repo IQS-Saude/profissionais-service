@@ -28,8 +28,12 @@ public class BuscarProfissionaisAdminQueryService : IBuscarProfissionaisAdminQue
             .ToArrayAsync();
     }
 
-    public async Task<int> ContarProfissionaisPorStatusENome(bool status)
+    public async Task<int> ContarProfissionaisPorStatusENome(bool status, string? nome)
     {
-        return await _profissionalContext.Profissionais.CountAsync(profissional => profissional.Status == status);
+        var queryCount = _profissionalContext.Profissionais.Where(profissional => profissional.Status == status);
+
+        if (nome is not null) queryCount = queryCount.Where(profissional => profissional.Nome.Contains(nome));
+
+        return await queryCount.CountAsync();
     }
 }

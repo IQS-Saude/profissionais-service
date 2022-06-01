@@ -25,7 +25,7 @@ public class
             request.Pagina,
             request.Limite);
         var totalProfissionais =
-            await _buscarProfissionaisAdminQueryService.ContarProfissionaisPorStatusENome(request.Status);
+            await _buscarProfissionaisAdminQueryService.ContarProfissionaisPorStatusENome(request.Status, request.Nome);
 
         return new BuscarProfissionaisAdminResponse(profissionais, request.Pagina, profissionais.Length,
             totalProfissionais);
