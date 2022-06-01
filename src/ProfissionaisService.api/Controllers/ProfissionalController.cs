@@ -51,7 +51,7 @@ public class ProfissionalController : ApiController
                 request.UnidadeId, request.ImagemUrlPerfil, request.Conselho, request.NumeroIdentificacao,
                 request.Telefone,
                 request.Celular, request.Email, request.Site, request.Facebook, request.Instagram, request.Youtube,
-                request.Linkedin, request.Recomendado, request.Status, request.Especialidades));
+                request.Linkedin, request.Recomendado, request.Status, request.EspecialidadesIds));
 
             return Ok(Success(response));
         }
@@ -76,7 +76,7 @@ public class ProfissionalController : ApiController
                 request.UnidadeId, request.ImagemUrlPerfil, request.Conselho, request.NumeroIdentificacao,
                 request.Telefone,
                 request.Celular, request.Email, request.Site, request.Facebook, request.Instagram, request.Youtube,
-                request.Linkedin, request.Recomendado, request.Status, request.Especialidades));
+                request.Linkedin, request.Recomendado, request.Status, request.EspecialidadesIds));
 
             return Ok(Success(response));
         }

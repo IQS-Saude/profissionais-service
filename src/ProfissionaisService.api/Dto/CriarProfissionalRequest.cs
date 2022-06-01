@@ -35,5 +35,5 @@ public record CriarProfissionalRequest
     [JsonConverter(typeof(StringBoolJsonConverter))]
     public bool Status { get; set; }
 
-    public List<int> Especialidades { get; set; }
+    public List<int> EspecialidadesIds { get; set; }
 }

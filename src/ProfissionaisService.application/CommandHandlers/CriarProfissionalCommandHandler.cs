@@ -71,7 +71,7 @@ public class CriarProfissionalCommandHandler : IRequestHandler<CriarProfissional
             Linkedin = profissionalCriado.Linkedin,
             Recomendado = profissionalCriado.Recomendado,
             Status = profissionalCriado.Status,
-            Especialidades = profissionalCriado.Especialidades.Select(especialidade => especialidade.Id).ToList()
+            EspecialidadesIds = profissionalCriado.Especialidades.Select(especialidade => especialidade.Id).ToList()
         };
     }
 }

@@ -54,7 +54,7 @@ public class
             Linkedin = profissionalAlterado.Linkedin,
             Recomendado = profissionalAlterado.Recomendado,
             Status = profissionalAlterado.Status,
-            Especialidades = profissionalAlterado.Especialidades.Select(especialidade => especialidade.Id).ToList()
+            EspecialidadesIds = profissionalAlterado.Especialidades.Select(especialidade => especialidade.Id).ToList()
         };
     }
 
